@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #a33900;
+    --color-primary-hover: #cc4900;
+    --color-primary-light: #ffdbce;
+    --color-surface: #ffffff;
+    --color-surface-card: #ffffff;
+    --color-surface-muted: #f3f4f3;
+    --color-surface-border: #e2e2e2;
+    --color-text-main: #1a1c1c;
+    --color-text-muted: #5a5c5b;
+    --color-accent-green: #006947;
+    --color-accent-green-bg: #e6f7ef;
+    --color-dark-bg: #141615;
+    --color-dark-card: #1c1f1e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    color: var(--color-text-main);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+  }
+}
+
+/* Repeating minimal architectural CSS background grid */
+.site-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Utility grid class for modular application */
+.bg-grid-pattern {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Editorial accent font for distinguished highlights */
+.font-editorial {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Custom smooth transitions and utility animations */
+.badge-pulse {
+  position: relative;
+}
+
+.badge-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: currentColor;
+  opacity: 0.4;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Line-height and text readability constraints */
+.content-max-width {
+  max-width: 1200px;
+}
+
+/* Card hover elevations */
+.service-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -8px rgba(26, 28, 28, 0.08);
+}
+
+.project-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px -10px rgba(26, 28, 28, 0.12);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.04);
+}
+
+.project-image {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active Nav Link Styling */
+.nav-link.active {
+  color: #1a1c1c;
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #a33900;
+}
+
+/* Back to top button visibility */
+#backToTopBtn {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#backToTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#backToTopBtn.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
